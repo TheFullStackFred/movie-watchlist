@@ -86,6 +86,20 @@ header * {
   background: #fff;
 }
 
+/* Main */
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  color: #dfdddd;
+}
+
+i {
+  font-size: 4.6rem;
+}
+
 /* Media queries */
 @media (min-width: 430px) {
   header {
