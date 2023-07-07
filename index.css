@@ -72,9 +72,8 @@ header * {
   border: 1px solid #555;
   display: block;
   padding: 0.6em 0 0.6em 2.5em;
-  background: #fff url('/images/search-icon.png') no-repeat left center;
+  background: #fff url('/images/search-icon.png') no-repeat 9px center;
   background-size: 20px auto;
-  background-position: 9px center;
 }
 
 .search__btn {
