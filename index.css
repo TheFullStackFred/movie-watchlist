@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
 *,
 *::before,
 *::after {
@@ -9,11 +11,54 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+}
+
 button {
   font-family: inherit;
 }
 
-image {
-  display: block;
+header {
+  background: url(images/header-background.jpg) lightgray 0px -158.291px / 100% 423.007%
+    no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 12.5rem;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+header * {
+  z-index: 1;
+}
+
+.header__title {
+  font-size: 2.6rem;
+  font-weight: 800;
+}
+
+.header__link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (min-width: 430px) {
+  header {
+    flex-direction: unset;
+    align-items: center;
+    justify-content: space-around;
+  }
 }
