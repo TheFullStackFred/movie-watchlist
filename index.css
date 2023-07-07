@@ -59,9 +59,11 @@ header * {
 
 /* Search  */
 .search {
+  position: relative;
   display: flex;
   justify-content: center;
   padding: 0 1.5em;
+  margin: -17px;
 }
 
 .search__input {
@@ -70,7 +72,7 @@ header * {
   border: 1px solid #555;
   display: block;
   padding: 0.6em 0 0.6em 2.5em;
-  background: transparent url('/images/search-icon.png') no-repeat left center;
+  background: #fff url('/images/search-icon.png') no-repeat left center;
   background-size: 20px auto;
   background-position: 9px center;
 }
@@ -81,6 +83,7 @@ header * {
   border: 1px solid black;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
+  background: #fff;
 }
 
 /* Media queries */
