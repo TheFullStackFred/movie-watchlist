@@ -22,7 +22,7 @@ button {
 /* Header */
 header {
   color: #fff;
-  background: url('images/header-background.jpg') lightgray 0px -158.291px / 100%
+  background: url('assets/header-background.jpg') lightgray 0px -158.291px / 100%
     423.007% no-repeat;
   position: relative;
   display: flex;
