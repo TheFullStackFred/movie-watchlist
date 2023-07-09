@@ -86,32 +86,47 @@ header * {
   padding: 0 1em;
 }
 
-/* Main */
-.movies {
+/* Movies */
+.movies .movies__message {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #dfdddd;
+}
+
+.movies__message {
+  height: 80vh;
 }
 
 .movies__icon {
   font-size: 4.6rem;
 }
 
-.movies__movie {
+.movies__icon,
+.movies__title {
+  color: #dfdddd;
+}
+
+.movies__card {
+  display: flex;
+  padding: 2.5em;
+}
+
+.movies__poster {
+  width: 200px;
+  height: auto;
+}
+
+.movies__row__info1 {
+  display: flex;
+  align-items: center;
+}
+
+.movies__row__info2 {
   display: flex;
 }
 
-.movies__row--info1 {
-  display: flex;
-}
-
-.movies__row--info2 {
-  display: flex;
-}
-
-.movies__row--info3 {
+.movies__row__info3 {
   display: flex;
 }
 
@@ -122,4 +137,9 @@ header * {
     align-items: center;
     justify-content: space-around;
   }
+}
+
+svg {
+  width: 15px;
+  height: 15px;
 }
