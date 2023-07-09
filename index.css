@@ -87,17 +87,32 @@ header * {
 }
 
 /* Main */
-main {
+.movies {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
-  /* color: #dfdddd; */
+  color: #dfdddd;
 }
 
-i {
+.movies__icon {
   font-size: 4.6rem;
+}
+
+.movies__movie {
+  display: flex;
+}
+
+.movies__row--info1 {
+  display: flex;
+}
+
+.movies__row--info2 {
+  display: flex;
+}
+
+.movies__row--info3 {
+  display: flex;
 }
 
 /* Media queries */

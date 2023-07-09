@@ -34,19 +34,32 @@ async function renderMovies(movies) {
     moviesArray = await Promise.all(fetchPromises)
 
     let moviesHtml = ''
+
     moviesArray.forEach((movie) => {
-      moviesHtml += `<div class="movie__container">
-          <div class="movie__poster">
+      console.log(movie)
+      moviesHtml += `<div class="movies__movie">
+          <div class="movies__poster">
             <img src="${movie.Poster}" />
           </div>
-          <div class="movie__title-rank">
-            <h3>${movie.Title}</h3>
-            <p></p>
+          <div class="movies__info">
+          <div class="movies__row--info1">
+          <h3>${movie.Title}</h3>
+          <p>${movie.Ratings[0].Value.slice(0, 3)}</p>
+          </div>
+          <div class="movies__row--info2">
+          <p>${movie.Runtime}</p>
+          <p>${movie.Genre}</p>
+          <button class="movies__watchlist--btn">Watchlist</button>
+          </div>
+          <div class="movies__row--info3">
+          <p>${movie.Plot}</p>
+          </div>
+          </div>
           </div>
         </div>`
     })
 
-    document.getElementById('movie').innerHTML = moviesHtml
+    document.getElementById('movies').innerHTML = moviesHtml
   } catch (err) {
     console.error(err)
   }
