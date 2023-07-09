@@ -154,6 +154,21 @@ header * {
 
 .movies__watchlist__btn {
   font-size: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.movies__watchlist__icon {
+  margin-right: 0.3em;
+}
+
+.movies__desc {
+  color: #6b7280;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 /* Media queries */
