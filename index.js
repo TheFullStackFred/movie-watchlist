@@ -1,5 +1,6 @@
 import API_KEY from './apiKey.js'
 
+const moviesEl = document.getElementById('movies')
 const searchInput = document.getElementById('search__input')
 const searchBtn = document.getElementById('search__btn')
 
@@ -19,6 +20,14 @@ async function searchMovie(e) {
 }
 
 async function renderMovies(movies) {
+  if (!movies) {
+    moviesEl.innerHTML =
+      '<h2 class="movies__message not-found">Unable to find what you’re looking for. Please try another search.</2>'
+    moviesEl.style.height = '80vh'
+    return
+  }
+
+  moviesEl.style.height = 'unset'
   let moviesArray = []
   let searchResultTitles = movies.map((movie) => movie.Title)
 

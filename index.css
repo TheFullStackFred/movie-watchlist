@@ -86,11 +86,14 @@ header * {
 }
 
 /* Movies */
-.movies .movies__message__container {
+.movies,
+.movies__message__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 0 1em;
 }
 
 .movies__message__container {
