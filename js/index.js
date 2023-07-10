@@ -1,4 +1,4 @@
-import { generateMovieHtml, addWatchListBtnEventListener } from '../utils.js'
+import { generateMovieHtml, addWatchListBtnEventListener } from '../js/utils.js'
 import API_KEY from '/js/apiKey.js'
 
 const moviesEl = document.getElementById('movies')
