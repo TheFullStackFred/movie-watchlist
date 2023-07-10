@@ -30,7 +30,7 @@ async function renderMovies(movies) {
 
   moviesEl.style.height = 'unset'
   let moviesArray = []
-  let searchResultTitles = movies.map((movie) => movie.Title)
+  const searchResultTitles = movies.map((movie) => movie.Title)
 
   try {
     let fetchPromises = searchResultTitles.map(async (title) => {
