@@ -1,7 +1,3 @@
-import {
-  generateMovieHtml,
-  addWatchListBtnEventListener,
-  renderWatchList
-} from '../utils.js'
+import { renderWatchList } from './utils.js'
 
 renderWatchList()
