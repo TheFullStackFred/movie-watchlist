@@ -3,7 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font awesome -->
+    <script
+      src="https://kit.fontawesome.com/590b1a5d95.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="index.css" />
+    <script type="module" src="watchlist.js"></script>
     <title>Watchlist</title>
   </head>
-  <body></body>
+  <body>
+    <!-- Header -->
+    <header>
+      <h1 class="header__title">My Watchlist</h1>
+      <a class="header__link" href="index.html">Search for movies</a>
+    </header>
+
+    <!-- Movies -->
+    <main id="movies" class="movies">
+      <div
+        id="movies__message__container"
+        class="movies__message__container"
+      ></div>
+    </main>
+  </body>
 </html>
