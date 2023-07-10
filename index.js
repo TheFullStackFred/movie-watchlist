@@ -57,12 +57,13 @@ async function renderMovies(movies) {
           <div class="movies__row2">
               <p>${movie.Runtime}</p>
               <p>${movie.Genre}</p>
-              <button class="movies__watchlist__btn"><img class="movies__watchlist__icon " src="assets/watchlist-icon.svg"/> Watchlist</button>
+              <button class="movies__watchlist__btn" data-movie-id=" ${
+                movie.imdbID
+              }"><img class="movies__watchlist__icon " src="assets/watchlist-icon.svg"/> Watchlist</button>
           </div>
               <p class="movies__desc">${movie.Plot}</p>
       </div>
   </div>
-
   `
     })
 
@@ -70,4 +71,17 @@ async function renderMovies(movies) {
   } catch (err) {
     console.error(err)
   }
+
+  document.querySelectorAll('.movies__watchlist__btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedMovie = moviesArray.find(
+        (movie) => movie.imdbID === btn.dataset.movieId.trim()
+      )
+      saveMovieToWatchList(selectedMovie)
+    })
+  })
+}
+
+function saveMovieToWatchList(movie) {
+  console.log(movie)
 }
