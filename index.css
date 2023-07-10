@@ -101,6 +101,13 @@ header * {
   height: 80vh;
 }
 
+.movies__add__movies__link {
+  color: #363636;
+  font-size: 0.875rem;
+  text-decoration: none;
+  font-weight: 700;
+}
+
 .movies__icon {
   font-size: 4.6rem;
 }

@@ -21,8 +21,9 @@ async function searchMovie(e) {
 
 async function renderMovies(movies) {
   if (!movies) {
-    moviesEl.innerHTML =
-      '<h2 class="movies__message not-found">Unable to find what you’re looking for. Please try another search.</2>'
+    moviesEl.innerHTML = `
+    <h2 class="movies__message not-found">Unable to find what you’re looking for. Please try another search.</2>
+    `
     moviesEl.style.height = '80vh'
     return
   }
