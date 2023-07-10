@@ -1,4 +1,5 @@
 import { generateMovieHtml, addWatchListBtnEventListener } from '../utils.js'
+import { renderWatchList } from './watchlist.js'
 import API_KEY from '/js/apiKey.js'
 
 const moviesEl = document.getElementById('movies')
