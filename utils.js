@@ -1,3 +1,5 @@
+import { renderWatchList } from './js/watchlist.js'
+
 function generateMovieHtml(movie, watchlist) {
   return `
   <div class="movies__card">
@@ -36,33 +38,6 @@ function generateMovieHtml(movie, watchlist) {
     `
 }
 
-function renderWatchList(watchlist) {
-  const moviesEl = document.getElementById('movies')
-  let currentWatchList = JSON.parse(localStorage.getItem('watchlist'))
-
-  if (!currentWatchList) {
-    moviesEl.innerHTML = `
-      <h2 class="movies__message not-found">
-      Your watchlist is looking a little empty...
-      </h2>
-      <a class="movies__add__movies__link" href="index.html"
-      ><img
-        class="movies__watchlist__icon"
-        src="assets/watchlist-icon.svg"
-      />Let's add some movies!</a
-    >
-    `
-
-    moviesEl.style.height = '80vh'
-  } else {
-    currentWatchList.forEach((movie) => {
-      moviesEl.innerHTML += generateMovieHtml(movie, 'watchlist.js')
-    })
-  }
-
-  addWatchListBtnEventListener(currentWatchList, 'watchlist.js')
-}
-
 function addWatchListBtnEventListener(moviesArray, watchlist) {
   if (watchlist) {
     document.querySelectorAll('.movies__watchlist__delete').forEach((btn) => {
@@ -95,6 +70,7 @@ function saveMovieToWatchList(selectedMovie) {
   if (!movieExists) {
     currentWatchList.push(selectedMovie)
     localStorage.setItem('watchlist', JSON.stringify(currentWatchList))
+
     alert(`${selectedMovie.Title} added to watchlist`)
   } else {
     alert(`${selectedMovie.Title} already exists in the watchlist`)
@@ -103,18 +79,16 @@ function saveMovieToWatchList(selectedMovie) {
 
 function deleteMovieFromWatchList(selectedMovie) {
   let currentWatchList = JSON.parse(localStorage.getItem('watchlist')) || []
-
   const updatedWatchList = currentWatchList.filter(
     (movie) => movie.imdbID !== selectedMovie.imdbID
   )
-
   localStorage.setItem('watchlist', JSON.stringify(updatedWatchList))
-  renderWatchList(updatedWatchList)
+
+  renderWatchList()
 }
 
 export {
   generateMovieHtml,
-  renderWatchList,
   addWatchListBtnEventListener,
   saveMovieToWatchList,
   deleteMovieFromWatchList
