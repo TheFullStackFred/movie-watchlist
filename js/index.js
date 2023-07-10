@@ -1,4 +1,4 @@
-import API_KEY from './apiKey.js'
+import API_KEY from '/js/apiKey.js'
 
 const moviesEl = document.getElementById('movies')
 const searchInput = document.getElementById('search__input')
@@ -83,12 +83,17 @@ async function renderMovies(movies) {
 }
 
 function saveMovieToWatchList(selectedMovie) {
-  let currentWatchList = JSON.parse(localStorage.getItem('watchlist'))
+  let currentWatchList = JSON.parse(localStorage.getItem('watchlist')) || []
 
-  if (!Array.isArray(currentWatchList)) {
-    currentWatchList = [selectedMovie]
-  } else {
+  const movieExists = currentWatchList.find(
+    (movie) => movie.imdbID === selectedMovie.imdbID
+  )
+
+  if (!movieExists) {
     currentWatchList.push(selectedMovie)
+    localStorage.setItem('watchlist', JSON.stringify(currentWatchList))
+    alert(`${selectedMovie.Title} added to watchlist`)
+  } else {
+    alert(`${selectedMovie.Title} already to exists in the watchlist`)
   }
-  localStorage.setItem('watchlist', JSON.stringify(currentWatchList))
 }
