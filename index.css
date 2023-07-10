@@ -93,12 +93,12 @@ header * {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   padding: 0 1em;
 }
 
 .movies__message__container {
   height: 80vh;
+  text-align: center;
 }
 
 .movies__add__movies__link {

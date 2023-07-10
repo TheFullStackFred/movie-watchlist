@@ -1,4 +1,4 @@
-function generateMovieHtml(movie, jsFile) {
+function generateMovieHtml(movie, watchlist) {
   return `
   <div class="movies__card">
   <img class="movies__poster" src="${movie.Poster}" />
@@ -12,7 +12,7 @@ function generateMovieHtml(movie, jsFile) {
       <p>${movie.Runtime}</p>
       <p>${movie.Genre}</p>
       ${
-        !jsFile
+        !watchlist
           ? `
       <button
         class="movies__watchlist__add"
@@ -36,16 +36,53 @@ function generateMovieHtml(movie, jsFile) {
     `
 }
 
-function addWatchListBtnEventListener(moviesArray) {
-  console.log(moviesArray)
-  document.querySelectorAll('.movies__watchlist__add').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const selectedMovie = moviesArray.find(
-        (movie) => movie.imdbID === btn.dataset.movieId.trim()
-      )
-      saveMovieToWatchList(selectedMovie)
+function renderWatchList(watchlist) {
+  const moviesEl = document.getElementById('movies')
+  let currentWatchList = JSON.parse(localStorage.getItem('watchlist'))
+
+  if (!currentWatchList) {
+    moviesEl.innerHTML = `
+      <h2 class="movies__message not-found">
+      Your watchlist is looking a little empty...
+      </h2>
+      <a class="movies__add__movies__link" href="index.html"
+      ><img
+        class="movies__watchlist__icon"
+        src="assets/watchlist-icon.svg"
+      />Let's add some movies!</a
+    >
+    `
+
+    moviesEl.style.height = '80vh'
+  } else {
+    currentWatchList.forEach((movie) => {
+      moviesEl.innerHTML += generateMovieHtml(movie, 'watchlist.js')
     })
-  })
+  }
+
+  addWatchListBtnEventListener(currentWatchList, 'watchlist.js')
+}
+
+function addWatchListBtnEventListener(moviesArray, watchlist) {
+  if (watchlist) {
+    document.querySelectorAll('.movies__watchlist__delete').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selectedMovie = moviesArray.find(
+          (movie) => movie.imdbID === btn.dataset.movieId.trim()
+        )
+        deleteMovieFromWatchList(selectedMovie)
+      })
+    })
+  } else {
+    document.querySelectorAll('.movies__watchlist__add').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selectedMovie = moviesArray.find(
+          (movie) => movie.imdbID === btn.dataset.movieId.trim()
+        )
+        saveMovieToWatchList(selectedMovie)
+      })
+    })
+  }
 }
 
 function saveMovieToWatchList(selectedMovie) {
@@ -64,11 +101,21 @@ function saveMovieToWatchList(selectedMovie) {
   }
 }
 
-function deleteMovieFromWatchList() {}
+function deleteMovieFromWatchList(selectedMovie) {
+  let currentWatchList = JSON.parse(localStorage.getItem('watchlist')) || []
+
+  const updatedWatchList = currentWatchList.filter(
+    (movie) => movie.imdbID !== selectedMovie.imdbID
+  )
+
+  localStorage.setItem('watchlist', JSON.stringify(updatedWatchList))
+  renderWatchList(updatedWatchList)
+}
 
 export {
   generateMovieHtml,
-  saveMovieToWatchList,
+  renderWatchList,
   addWatchListBtnEventListener,
+  saveMovieToWatchList,
   deleteMovieFromWatchList
 }
