@@ -46,7 +46,6 @@ async function renderMovies(movies) {
     let moviesHtml = ''
 
     moviesArray.forEach((movie) => {
-      console.log(movie.Ratings[0]?.Value.slice(0, 3))
       moviesHtml += `
       <div class="movies__card">
       <img class="movies__poster" src="${movie.Poster}" />
