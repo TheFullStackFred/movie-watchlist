@@ -166,7 +166,8 @@ header * {
   font-size: 0.75rem;
 }
 
-.movies__watchlist__btn {
+.movies__watchlist__add,
+.movies__watchlist__delete {
   font-size: inherit;
   background: none;
   border: none;

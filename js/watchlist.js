@@ -21,7 +21,7 @@ function renderWatchList() {
     moviesEl.style.height = '80vh'
   } else {
     currentWatchList.forEach((movie) => {
-      moviesEl.innerHTML += generateMovieHtml(movie)
+      moviesEl.innerHTML += generateMovieHtml(movie, 'watchlist.js')
     })
   }
 }
