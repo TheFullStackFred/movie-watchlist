@@ -46,6 +46,7 @@ async function renderMovies(movies) {
     let moviesHtml = ''
 
     moviesArray.forEach((movie) => {
+      console.log(movie.Ratings[0]?.Value.slice(0, 3))
       moviesHtml += `
       <div class="movies__card">
       <img class="movies__poster" src="${movie.Poster}" />
@@ -53,7 +54,12 @@ async function renderMovies(movies) {
           <div class="movies__row1">
               <h3 class="movies__title">${movie.Title}</h3>
              <img src="assets/rank-icon.svg"/>
-              <p class="movies__rank">${movie.Ratings[0].Value.slice(0, 3)}</p>
+             ${
+               movie.Ratings.length > 0
+                 ? `
+             <p class="movies__rank">${movie.Ratings[0]?.Value.slice(0, 3)}</p>`
+                 : `<p class="movies__rank">N/A</p>`
+             }
           </div>
           <div class="movies__row2">
               <p>${movie.Runtime}</p>
