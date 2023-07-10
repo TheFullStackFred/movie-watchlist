@@ -82,6 +82,13 @@ async function renderMovies(movies) {
   })
 }
 
-function saveMovieToWatchList(movie) {
-  console.log(movie)
+function saveMovieToWatchList(selectedMovie) {
+  let currentWatchList = JSON.parse(localStorage.getItem('watchlist'))
+
+  if (!Array.isArray(currentWatchList)) {
+    currentWatchList = [selectedMovie]
+  } else {
+    currentWatchList.push(selectedMovie)
+  }
+  localStorage.setItem('watchlist', JSON.stringify(currentWatchList))
 }
