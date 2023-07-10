@@ -51,13 +51,13 @@ async function renderMovies(movies) {
       <div class="movies__info">
           <div class="movies__row1">
               <h3 class="movies__title">${movie.Title}</h3>
-             <img src="/rank-icon.svg"/>
+             <img src="assets/rank-icon.svg"/>
               <p class="movies__rank">${movie.Ratings[0].Value.slice(0, 3)}</p>
           </div>
           <div class="movies__row2">
               <p>${movie.Runtime}</p>
               <p>${movie.Genre}</p>
-              <button class="movies__watchlist__btn"><img class="movies__watchlist__icon " src="/watchlist-icon.svg"/> Watchlist</button>
+              <button class="movies__watchlist__btn"><img class="movies__watchlist__icon " src="assets/watchlist-icon.svg"/> Watchlist</button>
           </div>
               <p class="movies__desc">${movie.Plot}</p>
       </div>

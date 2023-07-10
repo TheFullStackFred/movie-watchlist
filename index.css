@@ -72,8 +72,9 @@ header * {
   border-radius: 5px 0px 0px 5px;
   border: 1px solid #555;
   padding: 1em 0 1em 2.5em;
-  background: #fff url('/images/search-icon.png') no-repeat 9px center;
+  background: #fff url('/assets/search-icon.png') no-repeat 9px center;
   background-size: 20px auto;
+  outline: none;
 }
 
 .search__btn {
