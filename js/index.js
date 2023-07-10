@@ -8,6 +8,7 @@ searchBtn.addEventListener('click', searchMovie)
 
 async function searchMovie(e) {
   e.preventDefault()
+
   try {
     const res = await fetch(
       `http://www.omdbapi.com/?s=${searchInput.value}&apikey=${API_KEY}`
@@ -46,31 +47,7 @@ async function renderMovies(movies) {
     let moviesHtml = ''
 
     moviesArray.forEach((movie) => {
-      moviesHtml += `
-      <div class="movies__card">
-      <img class="movies__poster" src="${movie.Poster}" />
-      <div class="movies__info">
-          <div class="movies__row1">
-              <h3 class="movies__title">${movie.Title}</h3>
-             <img src="assets/rank-icon.svg"/>
-             ${
-               movie.Ratings.length > 0
-                 ? `
-             <p class="movies__rank">${movie.Ratings[0]?.Value.slice(0, 3)}</p>`
-                 : `<p class="movies__rank">N/A</p>`
-             }
-          </div>
-          <div class="movies__row2">
-              <p>${movie.Runtime}</p>
-              <p>${movie.Genre}</p>
-              <button class="movies__watchlist__btn" data-movie-id=" ${
-                movie.imdbID
-              }"><img class="movies__watchlist__icon " src="assets/watchlist-icon.svg"/> Watchlist</button>
-          </div>
-              <p class="movies__desc">${movie.Plot}</p>
-      </div>
-  </div>
-  `
+      moviesHtml += generateMovieHtml(movie)
     })
 
     document.getElementById('movies').innerHTML = moviesHtml
@@ -78,6 +55,48 @@ async function renderMovies(movies) {
     console.error(err)
   }
 
+  addWatchListBtnEventListener(moviesArray)
+}
+
+function generateMovieHtml(movie) {
+  return `
+  <div class="movies__card">
+  <img class="movies__poster" src="${movie.Poster}" />
+  <div class="movies__info">
+    <div class="movies__row1">
+      <h3 class="movies__title">${movie.Title}</h3>
+      <img src="assets/rank-icon.svg" />
+      ${
+        movie.Ratings.length > 0
+          ? `
+      <p class="movies__rank">${movie.Ratings[0]?.Value.slice(0, 3)}</p>
+      `
+          : `
+      <p class="movies__rank">N/A</p>
+      `
+      }
+    </div>
+    <div class="movies__row2">
+      <p>${movie.Runtime}</p>
+      <p>${movie.Genre}</p>
+      <button
+        class="movies__watchlist__btn"
+        data-movie-id=" ${movie.imdbID}"
+      >
+        <img
+          class="movies__watchlist__icon"
+          src="assets/watchlist-icon.svg"
+        />
+        Watchlist
+      </button>
+    </div>
+    <p class="movies__desc">${movie.Plot}</p>
+  </div>
+</div>
+  `
+}
+
+function addWatchListBtnEventListener(moviesArray) {
   document.querySelectorAll('.movies__watchlist__btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       const selectedMovie = moviesArray.find(
